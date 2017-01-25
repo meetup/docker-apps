@@ -14,6 +14,10 @@ cd /usr/local/james/apps/james
 ### Make sure docker-compose is installed
 
 https://docs.docker.com/compose/install/
+Or use pip to intall it
+```bash 
+sudo pip install docker-compose
+```
 
 ### Verify docker is runing; if not enable it to survive reboots and start it
 
