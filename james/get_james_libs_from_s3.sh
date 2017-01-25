@@ -10,6 +10,6 @@ get_james_libs_from_s3 () {
 	tar xzf james.tar.gz
 }
 
-get_james_libs_from_s3 ()
+get_james_libs_from_s3
 
 exit 0 
