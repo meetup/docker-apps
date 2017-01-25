@@ -10,9 +10,7 @@ sudo equo intall james
 
 ### Make sure docker-compose is installed
 
-```bash
 https://docs.docker.com/compose/install/
-```
 
 ### Verify docker is runing; if not enable it to survive reboots and start it
 
