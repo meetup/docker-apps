@@ -1,5 +1,5 @@
 #!/bin/bash -x
-# Use this script to get the latest james build from s3
+# Use this script to get the latest james build from s3 if 
 
 
 get_james_libs_from_s3 () {

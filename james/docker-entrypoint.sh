@@ -18,16 +18,6 @@ then
 		mkdir -p /usr/local/meetup/target/webapps
 		ln -sf /code/meetup/util /usr/local/meetup/
 		ln -sf /code/meetup/target/webapps/chapstick /usr/local/meetup/target/webapps/
-		# get james libs from s3
-		#if [[ -d /james_libs/james  ]]
-		#then
-		#	cp -r /james_libs/james /usr/local/
-		#else
-		#	echo "Use get_james_libs_from_s3.sh to download james.tar.gz (libs) from s3 and bind-mount into /james_libs"
-		#	exit 1
-		#fi
-		#cp -r /james_libs/apps/james/SAR-INF/lib  /usr/local/james/apps/james/SAR-INF/lib
-		#cp -r /james_libs/lib  /usr/local/james/lib
 		cp -r /james_libs/{apps,lib} /usr/local/james/
 		chown -R meetcvs.tech /usr/local/meetup/ /home/meetcvs/
 	fi
