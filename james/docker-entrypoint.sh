@@ -18,6 +18,7 @@ then
 		mkdir -p /usr/local/meetup/target/webapps
 		ln -sf /code/meetup/util /usr/local/meetup/
 		ln -sf /code/meetup/target/webapps/chapstick /usr/local/meetup/target/webapps/
+		# copy james libs that were generated from {ant james}
 		cp -r /james_libs/{apps,lib} /usr/local/james/
 		chown -R meetcvs.tech /usr/local/meetup/ /home/meetcvs/
 	fi
