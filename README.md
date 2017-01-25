@@ -45,6 +45,7 @@ ant james
      - /usr/local/james:/james_libs
 
 ```bash
+# clone this repo and cd into it
 cd /path/to/docker-james-stack
 docker-compose up
 ```
