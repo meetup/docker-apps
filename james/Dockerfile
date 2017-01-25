@@ -53,9 +53,9 @@ RUN cd /usr/local \
 # Install awscli with pip as it seems to be smaller than the bundled option
 RUN pip install --upgrade pip && pip install setuptools && pip install awscli
 
-# Meetup code & James config files
+# Meetup code & James libs config files
 RUN mkdir -p /opt/config && \
-	mkdir /code
+	mkdir /code /james_libs
 
 COPY config /opt/config
 

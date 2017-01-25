@@ -2,7 +2,7 @@
 
 if [ $1 == 'james' ]
 then
-	
+
 	# some legacy scripts use /bin/sh and then call bash functions because it works on gentoo..
 	ln -sf /bin/bash /bin/sh
 	mkdir -p /usr/local # just in case
@@ -13,12 +13,19 @@ then
 	chown -R meetcvs.tech /home/meetcvs/logs/
 
 	# symlinks party!!
-	if [[ -d /code/meetup/util && -d /code/james && -d /code/meetup/target/webapps/chapstick ]]
+	if [[ -d /code/meetup/util && -d /code/meetup/target/webapps/chapstick ]]
 	then 
 		mkdir -p /usr/local/meetup/target/webapps
 		ln -sf /code/meetup/util /usr/local/meetup/
 		ln -sf /code/meetup/target/webapps/chapstick /usr/local/meetup/target/webapps/
-		#cp -r /code/james /usr/local/
+		# get james libs from s3
+		if [[ -d /james_libs/james  ]]
+		then
+			cp -r /james_libs/james /usr/local/
+		else
+			echo "Use get_james_libs_from_s3.sh to download james.tar.gz (libs) from s3 and bind-mount into /james_libs"
+			exit 1
+		fi 
 		chown -R meetcvs.tech /usr/local/meetup/ /home/meetcvs/
 	fi
 	
