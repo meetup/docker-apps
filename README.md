@@ -19,9 +19,12 @@ Or use pip to intall it
 sudo pip install docker-compose
 ```
 
-### Verify docker is runing; if not enable it to survive reboots and start it
+### Verify docker is runing; if not install it, enable it to survive reboots and start it
 
 ```bash
+equo install meetup/docker
+# add yourself to the docker group
+usermod -aG docker ${USER}
 systemctl status docker
 # enable it to survive reboots
 systemctl enable docker
