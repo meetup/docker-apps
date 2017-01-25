@@ -29,9 +29,8 @@ EOF
 chmod +x /opt/postfix.sh
 
 postconf -e myhostname=${MAILDOMAIN:=mail.dev.meetup.com}
-postconf -e smtpd_recipient_restrictions=check_recipient_access hash:/etc/postfix/recipient_domains,reject
-postconf -e smtp_sasl_auth_enable=yes
-postconf -e broken_sasl_auth_clients=yes
+# reject sending mail to any non-@meetup.com address - config in /etc/postfix/recipient_domains
+postconf -e smtpd_recipient_restrictions=check_recipient_access,hash:/etc/postfix/recipient_domains,reject
 postconf -e alias_maps=cdb:/etc/mail/aliases
 # SMTP clients allowed to relay mail through Postfix
 postconf -e  mynetworks="0.0.0.0/0"
