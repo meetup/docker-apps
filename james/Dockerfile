@@ -53,8 +53,10 @@ RUN cd /usr/local \
 # Install awscli with pip as it seems to be smaller than the bundled option
 RUN pip install --upgrade pip && pip install setuptools && pip install awscli
 
-# James config files
-RUN mkdir -p /opt/config
+# Meetup code & James config files
+RUN mkdir -p /opt/config && \
+	mkdir /code
+
 COPY config /opt/config
 
 COPY docker-entrypoint.sh /
