@@ -1,0 +1,5 @@
+## listserv goes through to james
+/^[a-zA-Z0-9_][a-zA-Z0-9_\+\-\.\']*\-(?:(?:\d+(?:-announce)?)|(?:announce|list))\@(?:dev\.)?meetup\.com/    OK
+/^bb\@phi\.meetup\.com/ OK
+## reply-messages-<convo_id>-<hash>@(dev.)meetup.com for replying to messages/conversation emails - goes to james
+/^reply-messages-[0-9]+-[a-zA-Z0-9]+\@(?:dev\.)?meetup\.com/   OK

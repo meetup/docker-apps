@@ -1,0 +1,143 @@
+## dir locations and ownerships
+queue_directory = /var/spool/postfix
+command_directory = /usr/sbin
+daemon_directory = /usr/lib/postfix
+mail_owner = postfix
+mail_spool_directory = /var/spool/mail
+mailbox_command = /usr/bin/procmail
+sendmail_path = /usr/sbin/sendmail
+newaliases_path = /usr/bin/newaliases
+mailq_path = /usr/bin/mailq
+setgid_group = postdrop
+manpage_directory = /usr/local/man
+sample_directory = /etc/postfix
+readme_directory = no
+alias_maps = cdb:/etc/mail/aliases
+virtual_alias_domains = meetup.org
+virtual_alias_maps = cdb:/etc/mail/virtual
+recipient_delimiter = +
+export_environment = TZ
+import_environment = MAIL_CONFIG MAIL_DEBUG MAIL_LOGTAG TZ XAUTHORITY DISPLAY
+local_recipient_maps =
+	proxy:unix:passwd.byname,
+	$alias_maps,
+	pcre:/etc/postfix/local_map.pcre
+transport_maps = pcre:/etc/postfix/transports.pcre
+
+## set up smart relaying
+relayhost =
+
+## host lookup
+smtp_host_lookup = native
+
+
+## net config
+myhostname = mail.meetup.com
+mydomain = meetup.com
+myorigin = $mydomain
+inet_interfaces = all
+mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
+mynetworks = 172.0.0.0/8, 192.168.0.0/16, 127.0.0.1/32, 10.0.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.33.0.0/16, 10.34.0.0/16, 10.35.0.0/16, 64.90.170.0/26, 208.82.12.64/27, 38.125.127.128/26
+relay_domains = $mydestination, $mydomain
+
+## email config
+allow_percent_hack = yes
+append_at_myorigin = yes
+append_dot_mydomain = yes
+empty_address_recipient = MAILER-DAEMON
+masquerade_classes = envelope_sender, header_sender, header_recipient
+masquerade_domains = meetup.com
+best_mx_transport = local
+default_transport = smtp
+delay_warning_time = 4
+message_size_limit = 900000000
+#message_size_limit = 15728640
+
+## reject codes
+unknown_address_reject_code = 550
+unknown_client_reject_code = 550
+unknown_hostname_reject_code = 550
+invalid_hostname_reject_code = 501
+non_fqdn_reject_code = 504
+reject_code = 554
+relay_domains_reject_code = 554
+unknown_local_recipient_reject_code = 550
+unknown_relay_recipient_reject_code = 550
+unknown_virtual_alias_reject_code = 550
+unknown_virtual_mailbox_reject_code = 550
+
+## tuning
+in_flow_delay = 1s
+default_process_limit = 65
+smtpd_error_sleep_time = 0
+local_destination_concurrency_limit = 2
+smtpd_recipient_limit = 1000
+daemon_timeout = 5m
+smtpd_timeout = 150s
+smtp_helo_timeout = 30s
+smtp_mail_timeout = 150s
+smtp_rcpt_timeout = 150s
+smtp_data_init_timeout = 60s
+smtp_data_xfer_timeout = 90s
+smtp_data_done_timeout = 300s
+smtp_quit_timeout = 150s
+smtp_connect_timeout = 5s
+ipc_idle = 60s
+ipc_timeout = 5m
+max_idle = 60s
+max_use = 100
+trigger_timeout = 10s
+smtpd_policy_service_timeout = 240s
+policy_time_limit = 3600
+
+## Sasl
+smtpd_sasl_auth_enable = yes
+broken_sasl_auth_clients = yes
+smtpd_sasl_local_domain = $mydomain
+smtpd_sasl_security_options = noanonymous
+
+## SSL/TLS
+smtpd_tls_cert_file = /etc/postfix/mail.meetup.com.pem
+smtpd_tls_key_file = $smtpd_tls_cert_file
+smtpd_use_tls = yes
+tls_random_source = dev:/dev/urandom
+
+## security
+smtpd_delay_reject = yes
+disable_vrfy_command = yes
+smtpd_helo_required = yes
+
+smtpd_client_restrictions =
+	check_client_access cdb:/etc/postfix/access,
+	permit
+
+smtpd_etrn_restrictions =
+	permit_mynetworks,
+	reject
+
+#smtpd_helo_restrictions =
+#	permit_mynetworks,
+#	permit_sasl_authenticated,
+#	reject_invalid_hostname,
+#	reject_non_fqdn_hostname,
+#	permit
+
+smtpd_sender_restrictions =
+	permit_mynetworks,
+	reject_invalid_hostname,
+	reject_non_fqdn_sender,
+	reject_unknown_sender_domain,
+	permit
+
+smtpd_recipient_restrictions =
+	reject_non_fqdn_recipient,
+	reject_unknown_recipient_domain,
+	permit_mynetworks,
+	permit_sasl_authenticated,
+	reject_unauth_destination,
+	check_policy_service unix:private/policy
+
+smtpd_data_restrictions =
+	reject_unauth_pipelining,
+	permit
+

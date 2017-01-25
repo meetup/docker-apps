@@ -1,0 +1,131 @@
+mailer-daemon:	postmaster
+postmaster:	root
+bin:		root
+daemon:		root
+adm:		root
+lp:		root
+sync:		root
+shutdown:	root
+halt:		root
+mail:		root
+news:		root
+uucp:		root
+operator:	root
+games:		root
+gopher:		root
+ftp:		root
+nobody:		root
+vcsa:		root
+canna:		root
+wnn:		root
+rpm:		root
+nscd:		root
+pcap:		root
+apache:		root
+webalizer:	root
+radvd:		root
+pvm:		root
+amanda:		root
+privoxy:	root
+ident:		root
+named:		root
+xfs:		root
+gdm:		root
+mailnull:	root
+postgres:	root
+sshd:		root
+smmsp:		root
+postfix:	root
+netdump:	root
+ldap:		root
+squid:		root
+ntp:		root
+mysql:		root
+desktop:	root
+rpcuser:	root
+rpc:		root
+nfsnobody:	root
+bacula: 	root
+
+ingres:		root
+system:		root
+toor:		root
+manager:	root
+dumper:		root
+abuse:		root
+certmaster:	root
+
+# mailman aliases
+mailman:	postmaster
+mailman-owner:	mailman
+
+newsadm:	news
+newsadmin:	news
+usenet:		news
+ftpadm:		ftp
+ftpadmin:	ftp
+ftp-adm:	ftp
+ftp-admin:	ftp
+
+# trap decode to catch security attacks
+decode:		root
+
+# Person who should get root's mail
+root:		qing
+
+# Personal aliases
+webmaster:	systems_team	
+
+
+# general aliases
+
+qing:      	qing@hq.meetup.com
+anne:		anne@hq.meetup.com
+
+
+# softeng (for CVSSpam)
+systems_team:   qing, icorbett, wayne, troy, brandon, alessandro, arnaud
+
+
+#qa stuff
+
+anne_test01:      anne
+anne_test02:      anne
+anne_test03:      anne
+anne_test04:      anne
+anne_test05:      anne
+anne_test06:      anne
+anne_test07:      anne
+anne_test08:      anne
+anne_test09:      anne
+anne_test10:      anne
+anne_test11:      anne
+anne_test12:      anne
+anne_test13:      anne
+anne_test14:      anne
+anne_test15:      anne
+anne_test16:      anne
+anne_test17:      anne
+anne_test18:      anne
+anne_test19:      anne
+anne_test20:      anne
+anne_test21:      anne
+anne_test22:      anne
+anne_test23:      anne
+anne_test24:      anne
+anne_test25:      anne
+anne_test26:      anne
+anne_test27:      anne
+anne_test28:      anne
+anne_test29:      anne
+anne_test30:      anne
+anne_test31:      anne
+anne_test32:      anne
+anne_test33:      anne
+anne_test34:      anne
+anne_test35:      anne
+anne_test36:      anne
+anne_test37:      anne
+anne_test38:      anne
+anne_test39:      anne
+anne_test40:      anne
