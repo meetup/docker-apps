@@ -58,8 +58,8 @@ RUN mkdir -p /opt/config
 COPY config /opt/config
 
 COPY docker-entrypoint.sh /
-COPY update_james_gateway_ip.sh /
 COPY init /init
+COPY phoenix.sh /usr/local/james/bin/phoenix.sh
 RUN chmod 755 /docker-entrypoint.sh /init/* /usr/local/james/bin/phoenix.sh 
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
