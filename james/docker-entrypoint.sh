@@ -18,7 +18,7 @@ then
 		mkdir -p /usr/local/meetup/target/webapps
 		ln -sf /code/meetup/util /usr/local/meetup/
 		ln -sf /code/meetup/target/webapps/chapstick /usr/local/meetup/target/webapps/
-		cp -r /code/james /usr/local/
+		#cp -r /code/james /usr/local/
 		chown -R meetcvs.tech /usr/local/meetup/ /home/meetcvs/
 	fi
 	
