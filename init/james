@@ -1,0 +1,47 @@
+#!/bin/sh
+# James daemon start/stop script.
+
+mode=$1
+
+export JAMES_HOME=/usr/local/james
+export JAVA_HOME=/usr/local/java
+export JVM_OPTS='-Xms1280M -Xmx1280M -Xmn256M -XX:MaxPermSize=196M -server -Djava.awt.headless=true -Dsun.awt.font.advancecache=off'
+export JVM_GC_OPTS='-XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:+CMSParallelRemarkEnabled -XX:CMSInitiatingOccupancyFraction=60'
+export JVM_DEBUG_OPTS=''
+#export JVM_DEBUG_OPTS='-XX:+HeapDumpOnOutOfMemoryError -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:-TraceClassUnloading'
+
+export PHOENIX_JVM_OPTS="$JVM_OPTS $JVM_GC_OPTS $JVM_DEBUG_OPTS"
+
+
+## hardcode TZ as gentoo is busted
+export TZ="US/Eastern"
+
+case "$mode" in
+  'start')
+    # Start daemon
+	  ulimit -n 10240
+    cd $JAMES_HOME/logs/
+    su -c "$JAMES_HOME/bin/phoenix.sh start" nobody
+    ;;
+
+  'stop')
+    # Stop daemon. We use a signal here to avoid having to know the
+    # root password.
+	  $JAMES_HOME/bin/phoenix.sh stop
+    ;;
+
+  'restart')
+  	$0 stop
+  	$0 start
+    ;;
+
+  'check')
+	  $JAMES_HOME/bin/phoenix.sh check
+    ;;
+
+  *)
+    # usage
+    echo "usage: $0 start|stop|restart|check"
+    exit 1
+    ;;
+esac
