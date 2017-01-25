@@ -1,12 +1,5 @@
 #!/bin/bash -x
 
-
-if [[ -z ${SES_USERNAME} || -z ${SES_PASSWORD} ]]
-then 
-  echo "ERROR: Provide SES_USERNAME and SES_PASSWORD environment variables that are required for this container to relay mail to SES."
-  exit 1
-fi
-
 #supervisor
 cat > /etc/supervisor/conf.d/supervisord.conf <<EOF
 [supervisord]
