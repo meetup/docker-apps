@@ -32,7 +32,7 @@ then
 	&& cd /usr/local/james/apps/james/var \
 	&& mkdir -p mail mail/inboxes nntp nntp/articleid nntp/temp nntp/spool nntp/groups \
  	&& chmod 2755 mail mail/inboxes nntp nntp/articleid nntp/temp nntp/spool nntp/groups \
-	&& chown -R nobody.root /usr/local/james/apps/james/var /usr/local/james/logs /usr/local/james/temp \
+	&& chown -R nobody.root /usr/local/james/apps/james/var /usr/local/james/logs /usr/local/james/temp /usr/local/james/apps/james/logs/ \
 	&& mkdir -p /usr/local/james/work \
 	&& chown -R nobody.root /usr/local/james/work
 
@@ -43,7 +43,7 @@ then
 
 	# james needs chapstick code
 	mkdir -p /usr/local/tomcat
-	ln -s /usr/local/meetup/target/webapps /usr/local/tomcat/
+	ln -sf /usr/local/meetup/target/webapps /usr/local/tomcat/
 
 	echo "Done configuring james"	
 	echo "Starting"
