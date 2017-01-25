@@ -13,11 +13,11 @@ then
 	chown -R meetcvs.tech /home/meetcvs/logs/
 
 	# symlinks party!!
-	if [[ -d /code/meetup/util && -d /code/james && -d /code/chapstick ]]
+	if [[ -d /code/meetup/util && -d /code/james && -d /code/meetup/target/webapps/chapstick ]]
 	then 
 		mkdir -p /usr/local/meetup/target/webapps
-		ln -sf /code/util /usr/local/meetup/
-		ln -sf /code/chapstick /usr/local/meetup/target/webapps/
+		ln -sf /code/meetup/util /usr/local/meetup/
+		ln -sf /code/meetup/target/webapps/chapstick /usr/local/meetup/target/webapps/
 		cp -r /code/james /usr/local/
 		chown -R meetcvs.tech /usr/local/meetup/ /home/meetcvs/
 	fi
