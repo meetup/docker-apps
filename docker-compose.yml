@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+  james:
+    build: ./james
+    volumes:
+     - /usr/local/meetup:/code/meetup
+     - /usr/local/james:/james_libs
+    links:
+      - postfix:mail.int.meetup.com
+    ports:
+      - "6666:6666"
+
+  postfix:
+    build: ./postfix
+    ports:
+      - "25:25"
