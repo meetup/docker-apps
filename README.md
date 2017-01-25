@@ -2,10 +2,13 @@
 
 For running james in a dev env - specifically on our devboxes. 
 
-### Make sure james is installed on your Sabayon devbox 
+### Install james on your Sabayon devbox 
 
 ```bash
 sudo equo intall james
+sudo chown ${USER}.root -R /usr/local/james/apps/james
+cd /usr/local/james/apps/james 
+/usr/local/java/bin/jar -xf ../james.sar
 ```
 
 ### Make sure docker-compose is installed
