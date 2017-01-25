@@ -62,5 +62,7 @@ COPY init /init
 COPY phoenix.sh /usr/local/james/bin/phoenix.sh
 RUN chmod 755 /docker-entrypoint.sh /init/* /usr/local/james/bin/phoenix.sh 
 
+EXPOSE 6666
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["james"]
