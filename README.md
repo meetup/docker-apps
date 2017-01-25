@@ -2,6 +2,27 @@
 
 For running james in a dev env - specifically on our devboxes. 
 
+### Make sure james is installed on your Sabayon devbox 
+
+```bash
+sudo equo intall james
+```
+
+### Make sure docker-compose is installed
+
+```bash
+https://docs.docker.com/compose/install/
+```
+
+### Verify docker is runing; if not enable it to survive reboots and start it
+
+```bash
+systemctl status docker
+# enable it to survive reboots
+systemctl enable docker
+systemctl start docker
+```
+
 ### Build james locally 
 
 ```bash
