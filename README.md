@@ -47,7 +47,8 @@ ant james
 ```bash
 # clone this repo and cd into it
 cd /path/to/docker-james-stack
-docker-compose up
+(use --force-recreate; there are some errors i have to look into when restarting old james containers)
+docker-compose up --force-recreate 
 ```
 
 ### Note 
