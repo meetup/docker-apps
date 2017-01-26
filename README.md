@@ -51,7 +51,7 @@ cd /path/to/docker-james-stack
 docker-compose up --force-recreate 
 ```
 
-### Map james.int.meetup.com locally 
+### Map james.int.meetup.com to localhost 
 Update /etc/hosts with this entry on your devbox to have your app access james locally
 ```bash 
 127.0.0.1    james.int.meetup.com
