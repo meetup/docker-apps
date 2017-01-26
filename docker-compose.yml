@@ -9,9 +9,9 @@ services:
     links:
       - postfix:mail.int.meetup.com
     ports:
-      - "6666:6666"
+      - "25:6666"
 
   postfix:
     build: ./postfix
     ports:
-      - "25:25"
+      - ":25"
