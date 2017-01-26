@@ -14,4 +14,4 @@ services:
   postfix:
     build: ./postfix
     ports:
-      - ":25"
+      - "25"
