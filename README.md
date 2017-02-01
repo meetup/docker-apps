@@ -1,13 +1,13 @@
 # docker-james-stack
 
-For running james in a dev env - specifically on our devboxes. 
+For running james in a dev env - specifically on our devboxes.
 
-### Install james on your Sabayon devbox 
+### Install james on your Sabayon devbox
 
 ```bash
-sudo equo intall james
+sudo equo install james
 sudo chown ${USER}.root -R /usr/local/james/apps/james
-cd /usr/local/james/apps/james 
+cd /usr/local/james/apps/james
 /usr/local/java/bin/jar -xf ../james.sar
 ```
 
@@ -15,7 +15,7 @@ cd /usr/local/james/apps/james
 
 https://docs.docker.com/compose/install/
 Or use pip to intall it
-```bash 
+```bash
 sudo pip install docker-compose
 ```
 
@@ -31,7 +31,7 @@ systemctl enable docker
 systemctl start docker
 ```
 
-### Build james locally 
+### Build james locally
 
 ```bash
 cd /usr/local/meetup
@@ -48,15 +48,15 @@ ant james
 # clone this repo and cd into it
 cd /path/to/docker-james-stack
 (use --force-recreate; there are some errors i have to look into when restarting old james containers)
-docker-compose up --force-recreate 
+docker-compose up --force-recreate
 ```
 
-### Map james.int.meetup.com to localhost 
+### Map james.int.meetup.com to localhost
 Update /etc/hosts with this entry on your devbox to have your app access james locally
-```bash 
+```bash
 127.0.0.1    james.int.meetup.com
 ```
 
-### Note 
+### Note
 - The postfix container is accessible from the james container via docker links (using mail.int.meetup.com)
 - The postfix container is configured to reject sending emails to all other domains except @meetup.com; configured in /etc/postfix/recipient_domains
